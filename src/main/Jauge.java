@@ -8,10 +8,6 @@ package main;
  */
 public class Jauge {
     /**
-     * Le type de la jauge
-     */
-    protected TypeJauge type;
-    /**
      * Le nom de la jauge
      */
     protected String nom;
