@@ -84,18 +84,13 @@ public class Personnage {
      * @param jauge La jauge à afficher
      */
     private void afficheJauge(Jauge jauge) {
-        String resultat = "[";
         // valeur : ####
-        for(int i=0;i<jauge.getValeur();i++){
-            resultat += "#";
-        }
-        // on complète avec ____
-        for(int i=0;i<50-(jauge.getValeur()>0?jauge.getValeur():0);i++){
-            resultat += "_";
-        }
-        resultat += "] ";
-        // affichage du nom
-        resultat += jauge.getNom();
+        String resultat = "[" + "#".repeat(Math.max(0, jauge.getValeur())) +
+                // on complète avec ____
+                "_".repeat(Math.max(0, 50 - (Math.max(jauge.getValeur(), 0)))) +
+                "] " +
+                // affichage du nom
+                jauge.getNom();
         System.out.println(resultat);
     }
 
