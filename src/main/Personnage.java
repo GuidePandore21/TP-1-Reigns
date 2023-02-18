@@ -101,13 +101,7 @@ public class Personnage {
     public String getNom() {
         return nom;
     }
-    /**
-     * Modifie le nom du personnage
-     * @param nom Le nouveau nom du personnage
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+
     /**
      * Retourne le genre du personnage
      * @return le genre du personnage
@@ -115,13 +109,7 @@ public class Personnage {
     public Genre getGenre() {
         return genre;
     }
-    /**
-     * Modifie le genre du personnage
-     * @param genre Le nouveau genre du personnage
-     */
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
+
     /**
      * Retourne la jauge du clergé
      * @return la jauge du clergé
@@ -131,26 +119,11 @@ public class Personnage {
     }
 
     /**
-     * Modifie la jauge du clergé
-     * @param jaugeClerge La nouvelle jauge du clergé
-     */
-    public void setJaugeClerge(Jauge jaugeClerge) {
-        this.jaugeClerge = jaugeClerge;
-    }
-
-    /**
      * Retourne la jauge du peuple
      * @return la jauge du peuple
      */
     public Jauge getJaugePeuple() {
         return jaugePeuple;
-    }
-    /**
-     * Modifie la jauge du peuple
-     * @param jaugePeuple La nouvelle jauge du peuple
-     */
-    public void setJaugePeuple(Jauge jaugePeuple) {
-        this.jaugePeuple = jaugePeuple;
     }
 
     /**
@@ -160,13 +133,6 @@ public class Personnage {
     public Jauge getJaugeArmee() {
         return jaugeArmee;
     }
-    /**
-     * Modifie la jauge de l'armée
-     * @param jaugeArmee La nouvelle jauge de l'armée
-     */
-    public void setJaugeArmee(Jauge jaugeArmee) {
-        this.jaugeArmee = jaugeArmee;
-    }
 
     /**
      * Retourne la jauge des finances
@@ -174,13 +140,6 @@ public class Personnage {
      */
     public Jauge getJaugeFinance() {
         return jaugeFinance;
-    }
-    /**
-     * Modifie la jauge des finances
-     * @param jaugeFinance La nouvelle jauge des finances
-     */
-    public void setJaugeFinance(Jauge jaugeFinance) {
-        this.jaugeFinance = jaugeFinance;
     }
 
 }
