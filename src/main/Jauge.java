@@ -58,21 +58,4 @@ public class Jauge {
         this.valeur = valeur;
     }
 
-    /**
-     * Retourne le type de la jauge.
-     *
-     * @return le type de la jauge
-     */
-    public TypeJauge getType() {
-        return type;
-    }
-
-    /**
-     * Modifie le type de la jauge.
-     *
-     * @param type Le nouveau type de la jauge
-     */
-    public void setType(TypeJauge type) {
-        this.type = type;
-    }
 }
