@@ -90,19 +90,23 @@ public class Reigns {
      * et le genre (Roi ou Reine). Elle crée ensuite le personnage.
      */
 
-    private static void initPersonnage(){
+    private static void  initPersonnage(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrez le nom du personnage: ");
         System.out.flush();
         String nom = scanner.nextLine();
         System.out.println(
                 "Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
-        int genre = scanner.nextInt();
-        Genre roiReine;
-        if(genre==1){
-            roiReine = Genre.ROI;
-        }else{
-            roiReine = Genre.REINE;
+        Genre roiReine = null;
+        while (roiReine == null) {
+            int genre = scanner.nextInt();
+            if (genre == 1) {
+                roiReine = Genre.ROI;
+            }else if (genre == 2) {
+                roiReine = Genre.REINE;
+            }else {
+                System.out.println("Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
+            }
         }
 
         Reigns.personnage = new Personnage(nom,roiReine);

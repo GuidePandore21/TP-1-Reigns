@@ -8,6 +8,7 @@ public enum TypeJauge {
      * Jauge du clergé
      */
     CLERGE,
+
     /**
      * Jauge du peuple
      */
