@@ -10,10 +10,12 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class Reigns {
+
     /**
      * le personnage joué
      */
-    private static Personnage personnage;
+
+    protected static Personnage personnage;
 
     /**
      * la banque de questions
@@ -21,50 +23,12 @@ public class Reigns {
     private static ArrayList<Question> questions;
 
     /**
-     * La méthode main lance le jeu Reigns. Il initialise les questions, le personnage,
-     * affiche les jauges du personnage et lance une boucle de jeu qui se termine lorsque le personnage perd.
-     * Il affiche également le nombre de tours de jeu que le personnage a joué.
-     *
-     * @param args les arguments de la ligne de commande
-     */
-    public static void main(String[] args){
-
-        // début du jeu
-        System.out.println("Bienvenue sur Reigns");
-
-        initBanqueQuestions();
-
-        System.out.println("Création du personnage...");
-
-        initPersonnage();
-
-        personnage.AfficheJauges();
-
-        // tirage des questions
-        int nbTours = 0;
-        while(!personnage.finDuJeu()){
-            nbTours++;
-            Question question = getQuestionAleatoire();
-            reponseQuestion(question);
-            personnage.AfficheJauges();
-        }
-
-        // fin du jeu
-        System.out.println(
-                personnage.getNom()
-                        + " a perdu ! Son règne a duré "
-                        +nbTours
-                        + " tours");
-
-    }
-
-    /**
      * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
      * l'utilisateur d'entrer une réponse (soit "G" soit "D") et en fonction de la réponse, elle appelle la méthode
      * appropriée pour appliquer les conséquences sur les jauges du personnage.
      * @param question La question à laquelle il faut répondre
      */
-    private static void reponseQuestion(Question question){
+    static void reponseQuestion(Question question){
         question.afficheQuestion();
         // récupère la réponse
         Scanner scanner = new Scanner(System.in);
@@ -87,7 +51,7 @@ public class Reigns {
      * et le genre (Roi ou Reine). Elle crée ensuite le personnage.
      */
 
-    private static void  initPersonnage(){
+    static void  initPersonnage(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrez le nom du personnage: ");
         System.out.flush();
@@ -103,7 +67,7 @@ public class Reigns {
             }else if (genre == 2) {
                 roiReine = Genre.REINE;
                 System.out.println("Long règne à la Reine " + nom);
-            }else {
+            }else{
                 System.out.println("Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
             }
         }
@@ -114,7 +78,7 @@ public class Reigns {
     /**
      * Cette fonction initialise la banque de questions. Elle crée les questions et les ajoute à la banque.
      */
-    private static void initBanqueQuestions(){
+    static void initBanqueQuestions(){
         questions = new ArrayList<>();
         Question question1 = new Question(
                 "Main du roi",
@@ -169,7 +133,7 @@ public class Reigns {
      * Cette fonction permet de tirer une question aléatoire dans la banque de questions.
      * @return Une question aléatoire
      */
-    private static Question getQuestionAleatoire(){
+    static Question getQuestionAleatoire(){
         int numQuestion = (int) (Math.random()*questions.size());
         return questions.get(numQuestion);
     }
