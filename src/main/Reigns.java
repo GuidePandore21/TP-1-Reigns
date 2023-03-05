@@ -56,20 +56,21 @@ public class Reigns {
         System.out.println("Entrez le nom du personnage: ");
         System.out.flush();
         String nom = scanner.nextLine();
-        System.out.println(
-                "Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
-        Genre roiReine = null;
-        while (roiReine == null) {
-            int genre = scanner.nextInt();
-            if (genre == 1) {
-                roiReine = Genre.ROI;
-                System.out.println("Long règne au Rois " + nom);
-            }else if (genre == 2) {
-                roiReine = Genre.REINE;
-                System.out.println("Long règne à la Reine " + nom);
-            }else{
-                System.out.println("Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
-            }
+
+        String genre = "";
+        Genre roiReine;
+        while(!genre.equals("1") && !genre.equals("2")){
+            System.out.println("Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
+            System.out.flush();
+            genre = scanner.nextLine();
+        }
+        // applique les malus
+        if(genre.equals("1")){
+            roiReine = Genre.ROI;
+            System.out.println("Long règne au Rois " + nom);
+        }else{
+            roiReine = Genre.REINE;
+            System.out.println("Long règne à la Reine " + nom);
         }
 
         Reigns.personnage = new Personnage(nom,roiReine);
