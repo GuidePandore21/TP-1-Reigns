@@ -52,11 +52,13 @@ public class Reigns {
      */
 
     static void  initPersonnage(){
+        // choix du nom du personnage
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrez le nom du personnage: ");
         System.out.flush();
         String nom = scanner.nextLine();
 
+        // choix du genre du personnage
         String genre = "";
         Genre roiReine;
         while(!genre.equals("1") && !genre.equals("2")){
@@ -64,7 +66,7 @@ public class Reigns {
             System.out.flush();
             genre = scanner.nextLine();
         }
-        // applique les malus
+
         if(genre.equals("1")){
             roiReine = Genre.ROI;
             System.out.println("Long règne au Rois " + nom);
