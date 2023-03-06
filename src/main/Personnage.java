@@ -1,5 +1,7 @@
 package main;
 
+import main.Jauges.Jauge;
+
 /**
  * Représente un personnage ayant un nom, un genre, et des jauges de Clergé, Peuple, Armée et Finances.
  *

@@ -1,5 +1,7 @@
 package main;
 
+import main.Jauges.TypeJauge;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
