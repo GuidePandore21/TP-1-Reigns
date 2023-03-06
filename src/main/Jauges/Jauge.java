@@ -1,4 +1,6 @@
-package main;
+package main.Jauges;
+
+import main.Jauges.TypeJauge;
 
 /**
  * Représente une jauge avec un nom, une valeur et un type.
@@ -7,10 +9,6 @@ package main;
  * @version 1.0
  */
 public class Jauge {
-    /**
-     * Le type de la jauge
-     */
-    protected TypeJauge type;
     /**
      * Le nom de la jauge
      */
@@ -65,23 +63,5 @@ public class Jauge {
      */
     public void setValeur(int valeur) {
         this.valeur = valeur;
-    }
-
-    /**
-     * Retourne le type de la jauge.
-     *
-     * @return le type de la jauge
-     */
-    public TypeJauge getType() {
-        return type;
-    }
-
-    /**
-     * Modifie le type de la jauge.
-     *
-     * @param type Le nouveau type de la jauge
-     */
-    public void setType(TypeJauge type) {
-        this.type = type;
     }
 }
