@@ -10,10 +10,6 @@ import main.Jauges.TypeJauge;
  */
 public class Jauge {
     /**
-     * Le type de la jauge
-     */
-    protected TypeJauge type;
-    /**
      * Le nom de la jauge
      */
     protected String nom;
@@ -67,23 +63,5 @@ public class Jauge {
      */
     public void setValeur(int valeur) {
         this.valeur = valeur;
-    }
-
-    /**
-     * Retourne le type de la jauge.
-     *
-     * @return le type de la jauge
-     */
-    public TypeJauge getType() {
-        return type;
-    }
-
-    /**
-     * Modifie le type de la jauge.
-     *
-     * @param type Le nouveau type de la jauge
-     */
-    public void setType(TypeJauge type) {
-        this.type = type;
     }
 }
