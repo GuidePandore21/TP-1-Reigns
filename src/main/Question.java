@@ -114,22 +114,19 @@ public class Question {
      * @param effets les effets de jauge à appliquer
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
-    private void appliqueEffets(Map<TypeJauge,Integer> effets,
-                                Personnage personnage){
+    private void appliqueEffets(Map<TypeJauge,Integer> effets, Personnage personnage){
         for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-            switch (effet.getKey()) {
-                case ARMEE -> personnage.getJaugeArmee().setValeur(
-                        personnage.getJaugeArmee().getValeur()
-                                + effet.getValue());
-                case CLERGE -> personnage.getJaugeClerge().setValeur(
-                        personnage.getJaugeClerge().getValeur()
-                                + effet.getValue());
-                case FINANCE -> personnage.getJaugeFinance().setValeur(
-                        personnage.getJaugeFinance().getValeur()
-                                + effet.getValue());
-                case PEUPLE -> personnage.getJaugePeuple().setValeur(
-                        personnage.getJaugePeuple().getValeur()
-                                + effet.getValue());
+            if (effet.getKey() == TypeJauge.ARMEE) {
+                personnage.getJaugeArmee().setValeur(personnage.getJaugeArmee().getValeur() + effet.getValue());
+            }
+            else if (effet.getKey() == TypeJauge.CLERGE) {
+                personnage.getJaugeClerge().setValeur(personnage.getJaugeClerge().getValeur() + effet.getValue());
+            }
+            else if (effet.getKey() == TypeJauge.FINANCE) {
+                personnage.getJaugeFinance().setValeur(personnage.getJaugeFinance().getValeur() + effet.getValue());
+            }
+            else if (effet.getKey() == TypeJauge.PEUPLE) {
+                personnage.getJaugePeuple().setValeur(personnage.getJaugePeuple().getValeur() + effet.getValue());
             }
         }
     }
