@@ -25,30 +25,6 @@ public class Reigns {
     private static ArrayList<Question> questions;
 
     /**
-     * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
-     * l'utilisateur d'entrer une réponse (soit "G" soit "D") et en fonction de la réponse, elle appelle la méthode
-     * appropriée pour appliquer les conséquences sur les jauges du personnage.
-     * @param question La question à laquelle il faut répondre
-     */
-    static void reponseQuestion(Question question){
-        question.afficheQuestion();
-        // récupère la réponse
-        Scanner scanner = new Scanner(System.in);
-        String reponse = "";
-        while(!reponse.equals("G") && !reponse.equals("D")){
-            System.out.println("Entrez la réponse (G ou D)");
-            System.out.flush();
-            reponse = scanner.nextLine();
-        }
-        // applique les malus
-        if(reponse.equals("G")){
-            question.appliqueEffetsGauche(personnage);
-        }else{
-            question.appliqueEffetsDroite(personnage);
-        }
-    }
-
-    /**
      * Cette fonction permet d'initialiser le personnage joué. Elle demande à l'utilisateur de saisir le nom du personnage
      * et le genre (Roi ou Reine). Elle crée ensuite le personnage.
      */
@@ -141,5 +117,29 @@ public class Reigns {
     static Question getQuestionAleatoire(){
         int numQuestion = (int) (Math.random()*questions.size());
         return questions.get(numQuestion);
+    }
+
+    /**
+     * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
+     * l'utilisateur d'entrer une réponse (soit "G" soit "D") et en fonction de la réponse, elle appelle la méthode
+     * appropriée pour appliquer les conséquences sur les jauges du personnage.
+     * @param question La question à laquelle il faut répondre
+     */
+    static void reponseQuestion(Question question){
+        question.afficheQuestion();
+        // récupère la réponse
+        Scanner scanner = new Scanner(System.in);
+        String reponse = "";
+        while(!reponse.equals("G") && !reponse.equals("D")){
+            System.out.println("Entrez la réponse (G ou D)");
+            System.out.flush();
+            reponse = scanner.nextLine();
+        }
+        // applique les malus
+        if(reponse.equals("G")){
+            question.appliqueEffetsGauche(personnage);
+        }else{
+            question.appliqueEffetsDroite(personnage);
+        }
     }
 }
