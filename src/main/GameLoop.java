@@ -23,7 +23,7 @@ public class GameLoop extends Reigns{
 
         // tirage des questions
         int nbTours = 0;
-        while(!personnage.finDuJeu()){
+        while(personnage.finDuJeu(personnage.JaugeHashMap)){
             nbTours++;
             Question question = getQuestionAleatoire();
             reponseQuestion(question);

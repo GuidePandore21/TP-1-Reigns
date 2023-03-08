@@ -81,17 +81,16 @@ public class Personnage {
     /**
      * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
      *
-     * @return true si le jeu est fini, false sinon
+     * @return false si le jeu est fini, true sinon
      */
-    public boolean finDuJeu(){
-        return jaugeClerge.getValeur() <= 0
-                || jaugeClerge.getValeur() >= 50
-                || jaugePeuple.getValeur() <= 0
-                || jaugePeuple.getValeur() >= 50
-                || jaugeArmee.getValeur() <= 0
-                || jaugeArmee.getValeur() >= 50
-                || jaugeFinance.getValeur() <= 0
-                || jaugeFinance.getValeur() >= 50;
+    public boolean finDuJeu(Map<TypeJauge, Integer> effets){
+        for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
+            if (0 <= effet.getValue() && effet.getValue() <= 50) {
+                System.out.println(effet.getKey() + "est la raison de ta perte");
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -99,16 +98,6 @@ public class Personnage {
      * et des "_" pour représenter la valeur manquante.
      *
      */
-//    private void afficheJauge(TypeJauge jauge) {
-//        // valeur : ####
-//        String resultat = "[" + "#".repeat(Math.max(0, jauge.getValeur())) +
-//                // on complète avec ____
-//                "_".repeat(Math.max(0, 50 - (Math.max(jauge.getValeur(), 0)))) +
-//                "] " +
-//                // affichage du nom
-//                jauge.getNom();
-//        System.out.println(resultat);
-//    }
 
     private void afficheJauge(Map<TypeJauge, Integer> effets) {
         StringBuilder result = new StringBuilder();
