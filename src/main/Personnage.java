@@ -74,19 +74,19 @@ public class Personnage {
 //        afficheJauge(jaugeFinance);
 //        System.out.println();
 //    }
-        public void AfficheJauges(Map<TypeJauge, Integer> value) {
-            afficheJauge(value);
+        public void AfficheJauges(Map<TypeJauge, Integer> jauges) {
+            afficheJauge(jauges);
         }
 
     /**
      * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
      *
-     * @return false si le jeu est fini, true sinon
+     * @return true si le jeu est fini, false sinon
      */
-    public boolean finDuJeu(Map<TypeJauge, Integer> effets){
-        for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
-            if (0 <= effet.getValue() && effet.getValue() <= 50) {
-                System.out.println(effet.getKey() + "est la raison de ta perte");
+    public boolean finDuJeu(Map<TypeJauge, Integer> jauges){
+        for (Map.Entry<TypeJauge, Integer> jauge : jauges.entrySet()) {
+            if (jauge.getValue() <= 0 || jauge.getValue() >= 50) {
+                System.out.println(jauge.getKey() + " est la raison de ta perte (noob)");
                 return true;
             }
         }
@@ -99,18 +99,18 @@ public class Personnage {
      *
      */
 
-    private void afficheJauge(Map<TypeJauge, Integer> effets) {
+    private void afficheJauge(Map<TypeJauge, Integer> jauges) {
         StringBuilder result = new StringBuilder();
-        for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
+        for (Map.Entry<TypeJauge, Integer> jauge : jauges.entrySet()) {
             // on complète avec ____
             // affichage du nom
-            result.append("[").append("#".repeat(Math.max(0, effet.getValue()))).append(
+            result.append("[").append("#".repeat(Math.max(0, jauge.getValue()))).append(
             // on complète avec ____
-            "_".repeat(Math.max(0, 50 - (Math.max(effet.getValue(), 0))))).append("] ")
+            "_".repeat(Math.max(0, 50 - (Math.max(jauge.getValue(), 0))))).append("] ")
             // on ajoute le nom de la jauge (avec un espace à la fin pour afficher ...
-            .append(effet.getKey()).append(" ")
+            .append(jauge.getKey()).append(" ")
             // ... la valeur exacte de la jauge
-            .append(effet.getValue())
+            .append(jauge.getValue())
             // retours à la ligne pour affichage "propre"
             .append("\n");
         }
