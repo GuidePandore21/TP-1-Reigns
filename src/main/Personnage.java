@@ -56,24 +56,11 @@ public class Personnage {
         JaugeHashMap.put(TypeJauge.ARMEE, 15 + (int)(Math.random() * (35 - 15)));
         JaugeHashMap.put(TypeJauge.PEUPLE, 15 + (int)(Math.random() * (35 - 15)));
         JaugeHashMap.put(TypeJauge.FINANCE, 15 + (int)(Math.random() * (35 - 15)));
-//        jaugeClerge = new JaugeClergé("Clergé", 15 + (int)(Math.random() * (35 - 15)));
-//        jaugePeuple = new JaugePeuple("Peuple", 15 + (int)(Math.random() * (35 - 15)));
-//        jaugeArmee = new JaugeArmée("Armée", 15 + (int)(Math.random() * (35 - 15)));
-//        jaugeFinance = new JaugeFinance("Finances", 15 + (int)(Math.random() * (35 - 15)));
     }
 
     /**
      * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
      */
-//    public void AfficheJauges(Map<TypeJauge, Integer> values) {
-//        for (Map.Entry<TypeJauge, Integer> value : values.entrySet())
-//            afficheJauge(value.getKey());
-//        afficheJauge(JaugeHashMap.(TypeJauge.CLERGE));
-//        afficheJauge(jaugePeuple);
-//        afficheJauge(jaugeArmee);
-//        afficheJauge(jaugeFinance);
-//        System.out.println();
-//    }
         public void AfficheJauges(Map<TypeJauge, Integer> jauges) {
             afficheJauge(jauges);
         }
