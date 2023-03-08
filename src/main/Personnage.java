@@ -2,6 +2,9 @@ package main;
 
 import main.Jauges.*;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * Représente un personnage ayant un nom, un genre, et des jauges de Clergé, Peuple, Armée et Finances.
  *
@@ -34,6 +37,8 @@ public class Personnage {
      */
     protected Jauge jaugeFinance;
 
+    protected Map<TypeJauge, Integer> JaugeHashMap;
+
     /**
      * Crée un nouveau personnage avec le nom et le genre spécifiés,
      * puis initialise les jauges de Clergé, Peuple, Armée et Finances.
@@ -46,22 +51,32 @@ public class Personnage {
         this.genre = genre;
 
         // Initialisation des jauges entre 15 et 35 points
-        jaugeClerge = new JaugeClergé("Clergé", 15 + (int)(Math.random() * (35 - 15)));
-        jaugePeuple = new JaugePeuple("Peuple", 15 + (int)(Math.random() * (35 - 15)));
-        jaugeArmee = new JaugeArmée("Armée", 15 + (int)(Math.random() * (35 - 15)));
-        jaugeFinance = new JaugeFinance("Finances", 15 + (int)(Math.random() * (35 - 15)));
+        this.JaugeHashMap = new TreeMap<>();
+        JaugeHashMap.put(TypeJauge.CLERGE, 15 + (int)(Math.random() * (35 - 15)));
+        JaugeHashMap.put(TypeJauge.ARMEE, 15 + (int)(Math.random() * (35 - 15)));
+        JaugeHashMap.put(TypeJauge.PEUPLE, 15 + (int)(Math.random() * (35 - 15)));
+        JaugeHashMap.put(TypeJauge.FINANCE, 15 + (int)(Math.random() * (35 - 15)));
+//        jaugeClerge = new JaugeClergé("Clergé", 15 + (int)(Math.random() * (35 - 15)));
+//        jaugePeuple = new JaugePeuple("Peuple", 15 + (int)(Math.random() * (35 - 15)));
+//        jaugeArmee = new JaugeArmée("Armée", 15 + (int)(Math.random() * (35 - 15)));
+//        jaugeFinance = new JaugeFinance("Finances", 15 + (int)(Math.random() * (35 - 15)));
     }
 
     /**
      * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
      */
-    public void AfficheJauges() {
-        afficheJauge(jaugeClerge);
-        afficheJauge(jaugePeuple);
-        afficheJauge(jaugeArmee);
-        afficheJauge(jaugeFinance);
-        System.out.println();
-    }
+//    public void AfficheJauges(Map<TypeJauge, Integer> values) {
+//        for (Map.Entry<TypeJauge, Integer> value : values.entrySet())
+//            afficheJauge(value.getKey());
+//        afficheJauge(JaugeHashMap.(TypeJauge.CLERGE));
+//        afficheJauge(jaugePeuple);
+//        afficheJauge(jaugeArmee);
+//        afficheJauge(jaugeFinance);
+//        System.out.println();
+//    }
+        public void AfficheJauges(Map<TypeJauge, Integer> value) {
+            afficheJauge(value);
+        }
 
     /**
      * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
@@ -83,17 +98,34 @@ public class Personnage {
      * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
      * et des "_" pour représenter la valeur manquante.
      *
-     * @param jauge La jauge à afficher
      */
-    private void afficheJauge(Jauge jauge) {
-        // valeur : ####
-        String resultat = "[" + "#".repeat(Math.max(0, jauge.getValeur())) +
-                // on complète avec ____
-                "_".repeat(Math.max(0, 50 - (Math.max(jauge.getValeur(), 0)))) +
-                "] " +
-                // affichage du nom
-                jauge.getNom();
-        System.out.println(resultat);
+//    private void afficheJauge(TypeJauge jauge) {
+//        // valeur : ####
+//        String resultat = "[" + "#".repeat(Math.max(0, jauge.getValeur())) +
+//                // on complète avec ____
+//                "_".repeat(Math.max(0, 50 - (Math.max(jauge.getValeur(), 0)))) +
+//                "] " +
+//                // affichage du nom
+//                jauge.getNom();
+//        System.out.println(resultat);
+//    }
+
+    private void afficheJauge(Map<TypeJauge, Integer> effets) {
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
+            // on complète avec ____
+            // affichage du nom
+            result.append("[").append("#".repeat(Math.max(0, effet.getValue()))).append(
+            // on complète avec ____
+            "_".repeat(Math.max(0, 50 - (Math.max(effet.getValue(), 0))))).append("] ")
+            // on ajoute le nom de la jauge (avec un espace à la fin pour afficher ...
+            .append(effet.getKey()).append(" ")
+            // ... la valeur exacte de la jauge
+            .append(effet.getValue())
+            // retours à la ligne pour affichage "propre"
+            .append("\n");
+        }
+        System.out.println(result);
     }
 
     /**
@@ -184,5 +216,4 @@ public class Personnage {
     public void setJaugeFinance(Jauge jaugeFinance) {
         this.jaugeFinance = jaugeFinance;
     }
-
 }

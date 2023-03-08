@@ -19,7 +19,7 @@ public class GameLoop extends Reigns{
 
         initPersonnage();
 
-        personnage.AfficheJauges();
+        personnage.AfficheJauges(personnage.JaugeHashMap);
 
         // tirage des questions
         int nbTours = 0;
@@ -27,7 +27,7 @@ public class GameLoop extends Reigns{
             nbTours++;
             Question question = getQuestionAleatoire();
             reponseQuestion(question);
-            personnage.AfficheJauges();
+            personnage.AfficheJauges(personnage.JaugeHashMap);
         }
 
         // fin du jeu

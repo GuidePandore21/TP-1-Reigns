@@ -67,8 +67,8 @@ public class Question {
                 + ",D: "+effetDroite
                 + "]";
         System.out.println(result);
-        System.out.println("Effet G:"+afficheEffets(effetJaugeGauche));
-        System.out.println("Effet D:"+afficheEffets(effetJaugeDroite));
+        System.out.println("Effet G : " + afficheEffets(effetJaugeGauche));
+        System.out.println("Effet D : " + afficheEffets(effetJaugeDroite));
         System.out.flush();
     }
 
@@ -83,7 +83,7 @@ public class Question {
         for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
             result.append("; jauge ").append(effet.getKey()).append(":");
             if (effet.getValue() > 0) {
-                result.append("+");
+                result.append(" + ");
             }
             result.append(effet.getValue());
         }
@@ -137,8 +137,7 @@ public class Question {
      * @param jauge la jauge à laquelle l'effet doit être ajouté
      * @param valeur la valeur de l'effet à ajouter
      */
-    public void ajouteEffetGauche(TypeJauge jauge,
-                                  int valeur){
+    public void ajouteEffetGauche(TypeJauge jauge, int valeur) {
         effetJaugeGauche.put(jauge,valeur);
     }
 
@@ -148,8 +147,7 @@ public class Question {
      * @param jauge la jauge à laquelle l'effet doit être ajouté
      * @param valeur la valeur de l'effet à ajouter
      */
-    public void ajouteEffetDroite(TypeJauge jauge,
-                                  int valeur){
+    public void ajouteEffetDroite(TypeJauge jauge, int valeur) {
         effetJaugeDroite.put(jauge,valeur);
     }
 
