@@ -2,9 +2,7 @@ package main;
 
 public class GameLoop extends Reigns{
     /**
-     * La méthode main lance le jeu Reigns. Il initialise les questions, le personnage,
-     * affiche les jauges du personnage et lance une boucle de jeu qui se termine lorsque le personnage perd.
-     * Il affiche également le nombre de tours de jeu que le personnage a joué.
+     * La méthode main lance le jeu Reigns.
      *
      * @param args les arguments de la ligne de commande
      */

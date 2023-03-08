@@ -66,6 +66,30 @@ public class Personnage {
         }
 
     /**
+     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
+     * et des "_" pour représenter la valeur manquante.
+     *
+     */
+
+    private void afficheJauge(Map<TypeJauge, Integer> jauges) {
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<TypeJauge, Integer> jauge : jauges.entrySet()) {
+            // on complète avec ____
+            // affichage du nom
+            result.append("[").append("#".repeat(Math.max(0, jauge.getValue()))).append(
+                            // on complète avec ____
+                            "_".repeat(Math.max(0, 50 - (Math.max(jauge.getValue(), 0))))).append("] ")
+                    // on ajoute le nom de la jauge (avec un espace à la fin pour afficher ...
+                    .append(jauge.getKey()).append(" ")
+                    // ... la valeur exacte de la jauge
+                    .append(jauge.getValue())
+                    // retours à la ligne pour affichage "propre"
+                    .append("\n");
+        }
+        System.out.println(result);
+    }
+
+    /**
      * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
      *
      * @return true si le jeu est fini, false sinon
@@ -80,29 +104,6 @@ public class Personnage {
         return false;
     }
 
-    /**
-     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
-     * et des "_" pour représenter la valeur manquante.
-     *
-     */
-
-    private void afficheJauge(Map<TypeJauge, Integer> jauges) {
-        StringBuilder result = new StringBuilder();
-        for (Map.Entry<TypeJauge, Integer> jauge : jauges.entrySet()) {
-            // on complète avec ____
-            // affichage du nom
-            result.append("[").append("#".repeat(Math.max(0, jauge.getValue()))).append(
-            // on complète avec ____
-            "_".repeat(Math.max(0, 50 - (Math.max(jauge.getValue(), 0))))).append("] ")
-            // on ajoute le nom de la jauge (avec un espace à la fin pour afficher ...
-            .append(jauge.getKey()).append(" ")
-            // ... la valeur exacte de la jauge
-            .append(jauge.getValue())
-            // retours à la ligne pour affichage "propre"
-            .append("\n");
-        }
-        System.out.println(result);
-    }
 
     /**
      * Retourne le nom du personnage
