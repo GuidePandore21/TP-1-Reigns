@@ -1,7 +1,5 @@
 package main;
 
-import main.Jauges.TypeJauge;
-
 import java.util.Map;
 import java.util.TreeMap;
 
