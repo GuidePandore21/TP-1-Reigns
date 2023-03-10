@@ -1,4 +1,4 @@
-package main.Jauges;
+package main;
 
 /**
  * Enumeration des différents types de jauges
@@ -13,10 +13,12 @@ public enum TypeJauge {
      * Jauge du peuple
      */
     PEUPLE,
+
     /**
      * Jauge de l'armée
      */
     ARMEE,
+
     /**
      * Jauge des finances
      */

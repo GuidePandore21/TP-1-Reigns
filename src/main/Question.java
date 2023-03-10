@@ -1,7 +1,5 @@
 package main;
 
-import main.Jauges.TypeJauge;
-
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -67,8 +65,8 @@ public class Question {
                 + ",D: "+effetDroite
                 + "]";
         System.out.println(result);
-        System.out.println("Effet G:"+afficheEffets(effetJaugeGauche));
-        System.out.println("Effet D:"+afficheEffets(effetJaugeDroite));
+        System.out.println("Effet G : " + afficheEffets(effetJaugeGauche));
+        System.out.println("Effet D : " + afficheEffets(effetJaugeDroite));
         System.out.flush();
     }
 
@@ -83,7 +81,7 @@ public class Question {
         for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
             result.append("; jauge ").append(effet.getKey()).append(":");
             if (effet.getValue() > 0) {
-                result.append("+");
+                result.append(" + ");
             }
             result.append(effet.getValue());
         }
@@ -96,7 +94,7 @@ public class Question {
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
     public void appliqueEffetsGauche(Personnage personnage){
-        this.appliqueEffets(effetJaugeGauche, personnage);
+        this.appliqueEffets(effetJaugeGauche, personnage.JaugeHashMap, personnage);
     }
 
     /**
@@ -105,7 +103,7 @@ public class Question {
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
     public void appliqueEffetsDroite(Personnage personnage){
-        this.appliqueEffets(effetJaugeDroite, personnage);
+        this.appliqueEffets(effetJaugeDroite, personnage.JaugeHashMap, personnage);
     }
 
     /**
@@ -114,22 +112,13 @@ public class Question {
      * @param effets les effets de jauge à appliquer
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
-    private void appliqueEffets(Map<TypeJauge,Integer> effets,
-                                Personnage personnage){
+
+    private void appliqueEffets(Map<TypeJauge,Integer> effets, Map<TypeJauge,Integer> jauges, Personnage personnage) {
         for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-            switch (effet.getKey()) {
-                case ARMEE -> personnage.getJaugeArmee().setValeur(
-                        personnage.getJaugeArmee().getValeur()
-                                + effet.getValue());
-                case CLERGE -> personnage.getJaugeClerge().setValeur(
-                        personnage.getJaugeClerge().getValeur()
-                                + effet.getValue());
-                case FINANCE -> personnage.getJaugeFinance().setValeur(
-                        personnage.getJaugeFinance().getValeur()
-                                + effet.getValue());
-                case PEUPLE -> personnage.getJaugePeuple().setValeur(
-                        personnage.getJaugePeuple().getValeur()
-                                + effet.getValue());
+            for(Map.Entry<TypeJauge,Integer> jauge : jauges.entrySet()){
+                if (effet.getKey() == jauge.getKey()) {
+                    jauge.setValue(jauge.getValue() + effet.getValue());
+                }
             }
         }
     }
@@ -140,8 +129,7 @@ public class Question {
      * @param jauge la jauge à laquelle l'effet doit être ajouté
      * @param valeur la valeur de l'effet à ajouter
      */
-    public void ajouteEffetGauche(TypeJauge jauge,
-                                  int valeur){
+    public void ajouteEffetGauche(TypeJauge jauge, int valeur) {
         effetJaugeGauche.put(jauge,valeur);
     }
 
@@ -151,8 +139,7 @@ public class Question {
      * @param jauge la jauge à laquelle l'effet doit être ajouté
      * @param valeur la valeur de l'effet à ajouter
      */
-    public void ajouteEffetDroite(TypeJauge jauge,
-                                  int valeur){
+    public void ajouteEffetDroite(TypeJauge jauge, int valeur) {
         effetJaugeDroite.put(jauge,valeur);
     }
 

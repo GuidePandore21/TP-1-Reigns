@@ -2,9 +2,7 @@ package main;
 
 public class GameLoop extends Reigns{
     /**
-     * La méthode main lance le jeu Reigns. Il initialise les questions, le personnage,
-     * affiche les jauges du personnage et lance une boucle de jeu qui se termine lorsque le personnage perd.
-     * Il affiche également le nombre de tours de jeu que le personnage a joué.
+     * La méthode main lance le jeu Reigns.
      *
      * @param args les arguments de la ligne de commande
      */
@@ -19,15 +17,15 @@ public class GameLoop extends Reigns{
 
         initPersonnage();
 
-        personnage.AfficheJauges();
+        personnage.AfficheJauges(personnage.JaugeHashMap);
 
         // tirage des questions
         int nbTours = 0;
-        while(!personnage.finDuJeu()){
+        while(!personnage.finDuJeu(personnage.JaugeHashMap)){
             nbTours++;
             Question question = getQuestionAleatoire();
             reponseQuestion(question);
-            personnage.AfficheJauges();
+            personnage.AfficheJauges(personnage.JaugeHashMap);
         }
 
         // fin du jeu
