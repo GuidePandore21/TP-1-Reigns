@@ -13,10 +13,12 @@ public enum TypeJauge {
      * Jauge du peuple
      */
     PEUPLE,
+
     /**
      * Jauge de l'armée
      */
     ARMEE,
+
     /**
      * Jauge des finances
      */
