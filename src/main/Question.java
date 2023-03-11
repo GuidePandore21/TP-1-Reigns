@@ -85,7 +85,7 @@ public class Question {
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
 
-    private void appliqueEffets(Personnage personnage) {
+    public void appliqueEffets(Personnage personnage) {
         for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
             for(Map.Entry<TypeJauge,Integer> jauge : personnage.JaugeHashMap.entrySet()){
                 if (effet.getKey() == jauge.getKey()) {
