@@ -82,33 +82,14 @@ public class Question {
     }
 
     /**
-     * Applique les effets associés au choix gauche sur un personnage donné.
-     *
-     * @param personnage le personnage sur lequel les effets doivent être appliqués
-     */
-    public void appliqueEffetsGauche(Personnage personnage){
-        this.appliqueEffets(effetJaugeGauche, personnage.JaugeHashMap, personnage);
-    }
-
-    /**
-     * Applique les effets associés au choix droit sur un personnage donné.
-     *
-     * @param personnage le personnage sur lequel les effets doivent être appliqués
-     */
-    public void appliqueEffetsDroite(Personnage personnage){
-        this.appliqueEffets(effetJaugeDroite, personnage.JaugeHashMap, personnage);
-    }
-
-    /**
      * Applique les effets d'une jauge sur un personnage donné.
      *
-     * @param effets les effets de jauge à appliquer
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
 
-    private void appliqueEffets(Map<TypeJauge,Integer> effets, Map<TypeJauge,Integer> jauges, Personnage personnage) {
+    private void appliqueEffets(Personnage personnage) {
         for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-            for(Map.Entry<TypeJauge,Integer> jauge : jauges.entrySet()){
+            for(Map.Entry<TypeJauge,Integer> jauge : personnage.JaugeHashMap.entrySet()){
                 if (effet.getKey() == jauge.getKey()) {
                     jauge.setValue(jauge.getValue() + effet.getValue());
                 }
