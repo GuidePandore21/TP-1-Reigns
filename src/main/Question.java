@@ -26,14 +26,8 @@ public class Question {
      * l'effet de la réponse de droite
      */
     protected String effetDroite;
-    /**
-     * les effets sur les jauges pour la réponse de gauche
-     */
-    protected Map<TypeJauge, Integer> effetJaugeGauche;
-    /**
-     * les effets sur les jauges pour la réponse de droite
-     */
-    protected Map<TypeJauge, Integer> effetJaugeDroite;
+
+    protected Map<TypeJauge, Integer> effets;
 
     /**
      * Construit une nouvelle question avec les informations données
@@ -51,8 +45,7 @@ public class Question {
         this.question = question;
         this.effetGauche = effetGauche;
         this.effetDroite = effetDroite;
-        this.effetJaugeDroite = new TreeMap<>();
-        this.effetJaugeGauche = new TreeMap<>();
+        this.effets = new TreeMap<>();
     }
 
     /**
