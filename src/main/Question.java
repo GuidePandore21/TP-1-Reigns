@@ -58,8 +58,7 @@ public class Question {
                 + ",D: "+effetDroite
                 + "]";
         System.out.println(result);
-        System.out.println("Effet G : " + afficheEffets(effetJaugeGauche));
-        System.out.println("Effet D : " + afficheEffets(effetJaugeDroite));
+        System.out.println("Effets : " + afficheEffets());
         System.out.flush();
     }
 
