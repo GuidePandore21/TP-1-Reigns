@@ -98,23 +98,13 @@ public class Question {
     }
 
     /**
-     * Ajoute un effet à la jauge associée au choix gauche.
+     * Ajoute un effet à la jauge associée à un choix.
      *
      * @param jauge la jauge à laquelle l'effet doit être ajouté
      * @param valeur la valeur de l'effet à ajouter
      */
-    public void ajouteEffetGauche(TypeJauge jauge, int valeur) {
-        effetJaugeGauche.put(jauge,valeur);
-    }
-
-    /**
-     * Ajoute un effet à la jauge associée au choix droit.
-     *
-     * @param jauge la jauge à laquelle l'effet doit être ajouté
-     * @param valeur la valeur de l'effet à ajouter
-     */
-    public void ajouteEffetDroite(TypeJauge jauge, int valeur) {
-        effetJaugeDroite.put(jauge,valeur);
+    public void ajouteEffet(TypeJauge jauge, int valeur) {
+        effets.put(jauge,valeur);
     }
 
     /**
