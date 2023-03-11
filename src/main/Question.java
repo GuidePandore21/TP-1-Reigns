@@ -66,10 +66,9 @@ public class Question {
     /**
      * Retourne une chaîne de caractères représentant les effets d'une jauge.
      *
-     * @param effets La map des effets de jauge
      * @return la chaîne de caractères représentant les effets de la jauge
      */
-    private String afficheEffets(Map<TypeJauge, Integer> effets) {
+    private String afficheEffets() {
         StringBuilder result = new StringBuilder();
         for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
             result.append("; jauge ").append(effet.getKey()).append(":");
